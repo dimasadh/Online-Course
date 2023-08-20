@@ -6,5 +6,7 @@ const {APP_NAME} = process.env;
 router.get('/', function(req, res, next) {
   res.send('users');
 });
+router.post('/register', usersHandler.register);
+router.put('/', verifyToken, usersHandler.update);
 
 module.exports = router;
