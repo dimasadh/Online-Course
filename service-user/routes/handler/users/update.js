@@ -4,10 +4,11 @@ const Validator = require('fastest-validator')
 const v = new Validator();
 
 module.exports = async (req,res) =>{
+    let update_data = {}
     const schema = {
-        name: 'string|empty:false',
-        email: 'email|empty:false',
-        password: 'string|min:6',
+        name: 'string|optional',
+        email: 'email|optional',
+        password: 'string|optional|min:6',
         profession: 'string|optional',
         avatar: 'string|optional'
     };
@@ -41,30 +42,24 @@ module.exports = async (req,res) =>{
                 message: 'email already exist'
             })
         };
+        update_data['email'] = email;
     }
+    if (req.body.password){
+        update_data['password'] = await bcrypt.hash(req.body.password, 10);
+    }
+    update_data['name'] = req.body.name;
+    update_data['profession'] = req.body.profession;
+    update_data['avatar'] = req.body.avatar;
 
-    const password = await bcrypt.hash(req.body.password, 10);
-    const {
-        name, profession, avatar
-    } = req.body;
-
-    await user.update({
-        email,
-        password,
-        name,
-        password,
-        profession,
-        avatar
-    });
-
+    await user.update(update_data);
+    
+    if ('password' in update_data) {
+        delete update_data["password"]
+    }
     return res.json({
         status: 'success',
         data: {
-            id: user.id,
-            name,
-            email,
-            profession, 
-            avatar 
+            update_data
         }
     })
 
