@@ -19,14 +19,4 @@ jobs:
           PULL_REQUEST_TITLE: "sync: master to release"
           PULL_REQUEST_BODY: "sync-branches: New code has just landed in master so let's bring release up to speed!"
           PULL_REQUEST_AUTO_MERGE_METHOD: "merge"
-      - name: Sync Release to Develop
-        id: pull
-        uses: tretuna/sync-branches@1.4.0
-        with:
-          GITHUB_TOKEN: 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
-          FROM_BRANCH: "release"
-          TO_BRANCH: "develop"
-          PULL_REQUEST_TITLE: "sync: release to develop"
-          PULL_REQUEST_BODY: "sync-branches: New code has just landed in release so let's bring develop up to speed!"
-          PULL_REQUEST_AUTO_MERGE_METHOD: "merge"
           
