@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Lesson;
 
 class Chapter extends Model
 {
@@ -16,6 +17,6 @@ class Chapter extends Model
 
     public function lessons()
     {
-        return $this->hasMany('App\Lesson')->orderBy('id', 'ASC');
+        return $this->hasMany(Lesson::class)->orderBy('id', 'ASC');
     }
 }

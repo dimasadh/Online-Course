@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Course;
 
 class MyCourse extends Model
 {
@@ -16,6 +17,6 @@ class MyCourse extends Model
 
     public function course()
     {
-        return $this->belongsTo('App\Course');
+        return $this->belongsTo(Course::class);
     }
 }
