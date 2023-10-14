@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('mentors', [MentorController::class, 'create']);
+Route::put('mentors', [MentorController::class, 'update']);

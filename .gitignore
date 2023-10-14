@@ -105,3 +105,4 @@ dist
 
 # Public images
 public/images
+.vscode/launch.json
