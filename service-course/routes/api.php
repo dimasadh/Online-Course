@@ -22,13 +22,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('mentors', [MentorController::class, 'create']);
-Route::put('mentors', [MentorController::class, 'update']);
+Route::put('mentors/{id}', [MentorController::class, 'update']);
 Route::get('mentors', [MentorController::class, 'index']);
 Route::get('mentors/{id}', [MentorController::class, 'show']);
 Route::delete('mentors/{id}', [MentorController::class, 'destroy']);
 
 Route::post('courses', [CourseController::class, 'create']);
-Route::put('courses', [CourseController::class, 'update']);
+Route::put('courses/{id}', [CourseController::class, 'update']);
 Route::get('courses', [CourseController::class, 'index']);
 Route::delete('courses/{id}', [CourseController::class, 'destroy']);
 

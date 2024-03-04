@@ -68,7 +68,7 @@ class CourseController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         $rules = [
             'name' => 'string',
@@ -83,7 +83,6 @@ class CourseController extends Controller
         ];
 
         $data = $request->all();
-        $id = $request->get('id');
 
         $validator = Validator::make($data, $rules);
         if ($validator->fails()) {
